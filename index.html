@@ -1,14 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Page Title</title>
+<title>James Harvey's Portfolio</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">JmsHrvyyy's Portfolio</div>
 
-<h1>This is a Heading</h1>
-<h2>joshua bading baho cp</h2>
-<h3>david lubot</h3>
-<p>This is a paragraph.</p>
+            <div class="menu-toggle" id="menu-toggle">
+                <img src="images/menu.png" alt="Menu">
+            </div>
+
+            <ul id="nav-links">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  toggle.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+  });
+</script>
+
+<section class="hero">
+  <div class="hero-container">
+    
+    <div class="hero-image">
+      <img src="images/mike.jpg" alt="James Harvey Austria">
+    </div>
+
+    <div class="hero-text">
+      <h1>James Harvey Austria</h1>
+      <p>Computer Science Batch 2026</p>
+    </div>
+
+  </div>
+</section>
 
 </body>
 </html>

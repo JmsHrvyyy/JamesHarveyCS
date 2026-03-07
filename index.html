@@ -1,52 +1,196 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>James Harvey's Portfolio</title>
-<link rel="stylesheet" type="text/css" href="style.css">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <title>James Harvey's Portfolio</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <nav>
-        <div class="nav-container">
-            <div class="logo">JmsHrvyyy's Portfolio</div>
+  <nav>
+    <div class="nav-container">
+      <div class="logo">JmsHrvyyy's Portfolio</div>
 
-            <div class="menu-toggle" id="menu-toggle">
-                <img src="images/menu.png" alt="Menu">
-            </div>
+      <div class="menu-toggle" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
 
-            <ul id="nav-links">
-                <li><a href="#" class="active">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
+      <ul id="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section id="home" class="hero reveal" data-slide="left">
+    <div class="hero-container">
+      <div class="hero-image" data-aos="fade-right" data-aos-duration="1.800">
+        <img src="images/mike.jpg" alt="James Harvey Austria">
+      </div>
+
+      <div class="hero-text" data-aos="fade-left" data-aos-duration="1.800">
+        <h1>James Harvey Austria</h1>
+        <p>Computer Science Batch 2026</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about reveal" data-slide="right">
+    <div class="about-container">
+
+      <h2>About Me</h2>
+
+      <div class="about-box">
+
+        <p>
+          Hi! I'm <strong>James Harvey Austria</strong>, a Computer Science student
+          graduating in 2026. I enjoy building systems, websites, and applications
+          using programming languages like HTML, CSS, Java, and Python.
+        </p>
+
+        <p>
+          I'm currently improving my skills in web development and software
+          development while building projects for my portfolio.
+        </p>
+
+      </div>
+
+      <div class="familiar">
+        <h3>Familiar With</h3>
+        <div class="familiar-icons reveal">
+          <img src="images/html-5.png" alt="HTML" title="HTML">
+          <img src="images/css-3.png" alt="CSS" title="CSS">
+          <img src="images/js.png" alt="JavaScript" title="JavaScript">
+          <img src="images/php.png" alt="PHP" title="PHP">
+          <img src="images/mysql.png" alt="MySQL" title="MySQL">
+          <img src="images/java.png" alt="Java" title="Java">
+          <img src="images/dart.svg" alt="Dart" title="Dart">
+          <img src="images/flutterflow.svg" alt="FlutterFlow" title="FlutterFlow">
         </div>
-    </nav>
+      </div>
 
-<script>
-  const toggle = document.getElementById('menu-toggle');
-  const navLinks = document.getElementById('nav-links');
-
-  toggle.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
-  });
-</script>
-
-<section class="hero">
-  <div class="hero-container">
-    
-    <div class="hero-image">
-      <img src="images/mike.jpg" alt="James Harvey Austria">
     </div>
+  </section>
 
-    <div class="hero-text">
-      <h1>James Harvey Austria</h1>
-      <p>Computer Science Batch 2026</p>
+  <section id="projects" class="projects reveal">
+    <div class="projects-container">
+
+      <h3>School Projects</h3>
+
+      <!-- Project 1 -->
+      <div id="labuyo" class="project reveal">
+        <div class="project-image">
+          <img src="images/labuyo.jpg" alt="Labuyo">
+        </div>
+        <div class="project-text">
+          <h3>Labuyo Fisheries Corp.</h3>
+          <p>Commercial website developed for Labuyo Fisheries Corp, a milkfish (bangus) supplier.
+            The website presents the company's products, services, and business information for clients
+            who purchase and receive fish deliveries. It serves as an online presence to help the company
+            connect with customers and showcase their operations.</p>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div id="lacasa" class="project reveal">
+        <div class="project-image">
+          <img src="images/lacasa.jpg" alt="Lacasa">
+        </div>
+        <div class="project-text">
+          <h3>La Casa Antigo Resort</h3>
+          <p>A commercial website for La Casa Antigo Resort that showcases the resort's facilities
+            such as the private resort, fishing villa, pavilion, and dome. The website also includes
+            an admin-managed scheduling system where visitors can view upcoming events and activities
+            happening in the resort.</p>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div id="acts" class="project reveal">
+        <div class="project-image">
+          <img src="images/acts.jpg" alt="ACTS">
+        </div>
+        <div class="project-text">
+          <h3>AC Tutorial Services</h3>
+          <p>A web application designed for AC Tutorial Services that allows students to view tutorial
+            schedules and understand the tutoring process. The platform also works as a group communication
+            page, where teachers can post announcements and updates for students.</p>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div id="tagalert" class="project reveal">
+        <div class="project-image">
+          <img src="images/tagalert.jpg" alt="Tagalert">
+        </div>
+        <div class="project-text">
+          <h3>Tagalert Quick Response</h3>
+          <p>A mobile application designed to improve communication between barangay officials and residents.
+            Residents can report incidents such as accidents or urgent issues, allowing officials to respond
+            quickly. The app also provides analytics for officials to track reports and resolutions, while
+            residents can view local announcements and community updates.</p>
+        </div>
+      </div>
+
     </div>
+  </section>
 
+  <section id="contact" class="contact reveal">
+
+    <div class="contact-container">
+
+      <h2>Contact Me</h2>
+
+      <p class="contact-text">
+        Feel free to reach out if you have any questions, opportunities, or collaborations.
+        I'm always open to discussing projects and ideas.
+      </p>
+
+      <div class="contact-box">
+
+  <div class="contact-item">
+    📧 Email<br>
+    <span>your@email.com</span>
   </div>
-</section>
+
+  <div class="contact-item">
+    📱 Phone<br>
+    <span>+63 XXX XXX XXXX</span>
+  </div>
+
+  <div class="contact-item">
+    💻 GitHub<br>
+    <a href="https://github.com/yourusername" target="_blank">
+      github.com/yourusername
+    </a>
+  </div>
+
+  <div class="contact-item">
+    💼 LinkedIn<br>
+    <a href="https://linkedin.com/in/yourusername" target="_blank">
+      linkedin.com/in/yourusername
+    </a>
+  </div>
+
+  <div class="contact-item resume">
+    📄 Resume<br>
+    <a href="resume.pdf" download>Download Resume</a>
+  </div>
+
+</div>
+
+    </div>
+
+  </section>
+
+  <script src="script.js"></script>
 
 </body>
+
 </html>

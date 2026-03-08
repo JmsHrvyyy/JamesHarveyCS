@@ -36,7 +36,7 @@ body {
   position: fixed;       /* fixed sa viewport */
   bottom: 20px;          /* distance sa bottom */
   left: 0;               /* start sa left */
-  width: 80px;           /* adjust size */
+  width: 50px;           /* adjust size */
   z-index: 1000;         /* para visible sa ibabaw */
   pointer-events: none;  /* para hindi ma-interact ng cursor */
 }

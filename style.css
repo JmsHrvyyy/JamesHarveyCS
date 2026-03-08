@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+.no-select {
+  user-select: none;       /* Disable text selection */
+  cursor: default;         /* Panatilihing normal pointer cursor */
+}
+
 :root {
   --section-padding-desktop: 120px;
   --section-padding-mobile: 60px;
@@ -25,6 +30,15 @@ body {
   /* main background color */
   padding-top: 60px;
   overflow-x: hidden;
+}
+
+.mario-run {
+  position: fixed;       /* fixed sa viewport */
+  bottom: 20px;          /* distance sa bottom */
+  left: 0;               /* start sa left */
+  width: 80px;           /* adjust size */
+  z-index: 1000;         /* para visible sa ibabaw */
+  pointer-events: none;  /* para hindi ma-interact ng cursor */
 }
 
 nav {
@@ -133,9 +147,77 @@ nav ul li a:hover {
   gap: 100px;
 }
 
+.hero-image {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* glowing frame */
+.hero-image::before {
+  content: "";
+  position: absolute;
+  width: 315px;
+  height: 315px;
+  border-radius: 20px;
+
+  background: linear-gradient(45deg,#00fff7,#009dff,#00fff7);
+
+  animation: spin 6s linear infinite;
+  filter: blur(12px);
+  z-index: 0;
+}
+
 .hero-image img {
   width: 300px;
+  height: 300px;
+  object-fit: cover;
+
   border-radius: 20px;
+  position: relative;
+  z-index: 1;
+
+  border: 3px solid rgba(0,255,247,0.4);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.hero-image:hover img {
+  transform: translateY(-10px) scale(1.05); /* slight lift + scale */
+  border-color: #00fff7;
+  box-shadow: 0 0 25px #00fff7, 0 0 50px #009dff, 0 0 75px #00fff7;
+}
+
+/* optional: strengthen the glowing frame too */
+.hero-image:hover::before {
+  filter: blur(15px);
+  opacity: 1;
+}
+
+/* rotation animation */
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.interactive-glow {
+  position: relative;
+  transition: box-shadow 0.2s ease, color 0.2s ease;
+}
+
+.interactive-glow {
+  position: relative;
+  transition: box-shadow 0.2s ease;
+}
+
+.interactive-glow:hover {
+  box-shadow: 0 0 25px rgba(0,255,247,0.5);
 }
 
 .hero-text h1 {
@@ -149,6 +231,67 @@ nav ul li a:hover {
   color: #ccc;
   margin-top: 10px;
   text-shadow: 0 0 10px #00fff7;
+}
+
+/* Base glitch effect */
+.glitch {
+  position: relative;
+  color: #00fff7;
+  font-weight: bold;
+  font-size: inherit;
+  text-shadow: 0 0 5px #00fff7, 0 0 10px #009dff;
+  animation: flicker 2s infinite;
+}
+
+/* pseudo elements for extra glitch layers */
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  color: #00fff7;
+  clip: rect(0, 900px, 0, 0);
+}
+
+.glitch::before {
+  text-shadow: 2px 0 #ff00c8;
+  animation: glitchTop 2s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  text-shadow: -2px 0 #00fff7;
+  animation: glitchBottom 2s infinite linear alternate-reverse;
+}
+
+/* Flicker base animation */
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+  }
+  20%, 22%, 24%, 55% {
+    opacity: 0.3;
+  }
+}
+
+/* Top slice glitch */
+@keyframes glitchTop {
+  0% { clip: rect(0, 9999px, 0, 0); transform: translate(-2px, -2px); }
+  10% { clip: rect(2px, 9999px, 12px, 0); transform: translate(2px, 2px); }
+  20% { clip: rect(5px, 9999px, 10px, 0); transform: translate(-1px, 0); }
+  30% { clip: rect(3px, 9999px, 8px, 0); transform: translate(1px, -1px); }
+  40%, 100% { clip: rect(0, 9999px, 0, 0); transform: translate(0,0); }
+}
+
+/* Bottom slice glitch */
+@keyframes glitchBottom {
+  0% { clip: rect(0, 9999px, 0, 0); transform: translate(2px, 2px); }
+  10% { clip: rect(10px, 9999px, 18px, 0); transform: translate(-2px, -1px); }
+  20% { clip: rect(8px, 9999px, 14px, 0); transform: translate(1px, 1px); }
+  30% { clip: rect(5px, 9999px, 12px, 0); transform: translate(-1px, 0); }
+  40%, 100% { clip: rect(0, 9999px, 0, 0); transform: translate(0,0); }
 }
 
 .about {
@@ -285,28 +428,48 @@ nav ul li a:hover {
 }
 
 .project-image img {
-  width: 300px;
-  border-radius: 20px;
-}
-
-#labuyo img {
   width: 550px;
-}
-
-#lacasa img {
-  width: 400px;
-}
-
-#acts img {
-  width: 500px;
-}
-
-#tagalert img {
-  width: 450px;
+  border-radius: 20px;
 }
 
 .project-text {
   flex: 1;
+}
+
+.interactive-project {
+  position: relative;
+  perspective: 1000px; /* para sa 3D tilt */
+  display: inline-block;
+  width: fit-content;
+  border-radius: 20px;
+}
+
+.interactive-project::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+  border-radius: 20px;
+  background: linear-gradient(45deg,#00fff7,#009dff,#00fff7);
+  filter: blur(10px);
+  opacity: 0;
+  transition: opacity 0.2s ease, filter 0.2s ease;
+  z-index: 0;
+}
+
+.interactive-project img {
+  display: block;
+  width: 100%;
+  border-radius: 20px;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.interactive-project.glow::before {
+  opacity: 0.5; /* subtle glow */
 }
 
 .project-text h3 {
@@ -406,6 +569,22 @@ nav ul li a:hover {
 
 /* resume button style */
 
+.email a{
+  display:inline-block;
+  margin-top:5px;
+  padding:8px 15px;
+
+  border:1px solid #00fff7;
+  border-radius:10px;
+
+  transition:0.3s;
+}
+
+.email a:hover{
+  background:#00fff7;
+  color:#010b14;
+}
+
 .resume a{
   display:inline-block;
   margin-top:5px;
@@ -482,9 +661,28 @@ nav ul li a:hover {
     text-size-adjust: 80%;  
   }
 
-  .hero-image img {
-    width: 200px;
-    margin-bottom: 20px;
+  .hero-image {
+  width: 200px;
+  height: 200px;
+}
+
+.hero-image::before {
+  width: 215px;
+  height: 215px;
+}
+
+.hero-image img {
+  width: 200px;
+  height: 200px;
+}
+
+.hero-image:hover img {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 0 15px #00fff7, 0 0 30px #009dff, 0 0 45px #00fff7;
+  }
+
+  .hero-image:hover::before {
+    filter: blur(12px);
   }
 
   .hero-text h1 {
@@ -586,4 +784,3 @@ nav ul li a:hover {
     padding: var(--section-padding-mobile) 20px;
   }
 }
-
